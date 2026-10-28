@@ -1,0 +1,58 @@
+---
+description: neAGENCIJA WordPress plugin naming and Git Updater headers
+alwaysApply: true
+---
+
+# neAGENCIJA WordPress plugins
+
+Applies to all plugins under `D:\_WORDPRESS\_Plugins` (folders `nea-*`).
+
+## 1. Plugin Name
+
+- Folder slug: lowercase kebab-case starting with `nea-` (e.g. `nea-image-copyright`).
+- WordPress `Plugin Name` header **must** start with `neAGENCIJA` (exact casing).
+- After the brand, put a space and the human-readable name.
+
+```php
+/**
+ * Plugin Name: neAGENCIJA Image Copyright
+ */
+```
+
+```php
+// ❌ BAD
+ * Plugin Name: NEA Image Copyright
+ * Plugin Name: Image Copyright
+```
+
+## 2. Git Updater
+
+Every plugin must be installable/updatable via [Git Updater](https://git-updater.com/).
+
+When the user **first** provides the GitHub repository URL for a plugin, add these headers to the **main plugin PHP file** header comment (alongside Plugin Name, Version, etc.):
+
+```php
+ * GitHub Plugin URI: https://github.com/owner/repo
+ * Primary Branch: main
+```
+
+Rules:
+
+- Use the full HTTPS URL **without** `.git`.
+- `Primary Branch` is **always** `main`.
+- Do not invent a repo URL — only add/update these lines when the user supplies the link.
+- If headers are missing and the user later shares the repo URL (e.g. for commit/push), add them in the same change before committing.
+
+Example:
+
+```php
+/**
+ * Plugin Name:       neAGENCIJA Image Copyright
+ * Description:       …
+ * Version:           1.1.0
+ * Author:            neAGENCIJA
+ * Text Domain:       nea-image-copyright
+ * GitHub Plugin URI: https://github.com/gregamer/nea-image-copyright
+ * Primary Branch:    main
+ */
+```
